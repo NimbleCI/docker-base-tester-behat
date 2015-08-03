@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
         php5-cli
 
 ADD . /code/
+RUN chmod +x /code/entrypoint.sh
 
-ENTRYPOINT ["/code/vendor/bin/behat", "-c", "/code/behat.yml"]
+ENTRYPOINT ["/code/entrypoint.sh"]
 

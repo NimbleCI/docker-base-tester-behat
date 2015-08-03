@@ -1,8 +1,1 @@
-default:
-  # ...
-  extensions:
-    Behat\MinkExtension:
-      base_url:  'http://web'
-      sessions:
-        default:
-          goutte: ~
+# This should be overwritten by the "entrypoint.sh" script.
