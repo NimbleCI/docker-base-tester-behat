@@ -18,7 +18,7 @@ $ docker run -d --name my-web-application --expose 80 my-web-application
 
 Now run this "testing container" against it:
 ```
-$ docker run --rm --link my-web-application:web nimbleci/docker-base-tester-behat
+$ docker run --rm --link my-web-application:web -e TARGET=http://web nimbleci/docker-base-tester-behat
 ```
 
 This will run a very simple behat test which makes sure that the homepage returns
@@ -30,15 +30,6 @@ user tests, read more about Behat [here](http://docs.behat.org).
 
 # Notes
 
-This container assumes a few things about how you've set things up:
-### It is linked to a container aliased to "web"
-Internally the container tries to connect to the host called "web" so when you're
-linking your project with this container you must alias the container you are
-testing as "web". The alias is the second bit of the `--link` argument, this is
-what the host is called inside the container.
-### The website is available on port 80 of the linked "web" container
-The container tries to connect to port 80 of the "web" host. You specify which
-port the web container listens to in its `docker-compose.yml`.
 ### The container uses the mink-goutte-driver
 To keep things simple we use the
 [mink-goutte-driver](http://mink.behat.org/en/latest/drivers/goutte.html). There
